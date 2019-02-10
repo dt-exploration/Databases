@@ -1,4 +1,5 @@
 <?php
+
 //Connect to mysql server and create database
 $connect=new mysqli("localhost","root","") or die($connect->error);
 $query="CREATE DATABASE Firezend";
