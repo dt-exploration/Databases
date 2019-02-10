@@ -23,7 +23,7 @@ print_r($row);
 
 //Prepared statements
 $connect=new mysqli("localhost","root","","firezend") or die($connect->error);
-
+/*
 $insert=$connect->prepare("INSERT INTO Customers (Name, Address, email) VALUES (?,?,?)");
 $insert->bind_param("sss",$name,$address,$email);
 
@@ -38,6 +38,11 @@ $email="bk2132@gmail.com";
 $insert->execute();
 
 $insert->close();
+$connect->close();
+*/
+$query="UPDATE Customers SET Address='Maksima Gorkog 4' WHERE Name='Iven'; ";
+$query.="DELETE FROM Customers WHERE id='2' ";
+$connect->multi_query($query) or die($connect->error);
 $connect->close();
 
 ?>
