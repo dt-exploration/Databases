@@ -12,17 +12,32 @@ $connect->multi_query($query) or die("$connect->error");
 $connect->close();
 */
 
-/* Selecting from table
+// Selecting from table
 $connect=new mysqli("localhost","root","","firezend") or die("$connect->error");
 $query=" SELECT * FROM Customers WHERE name='Dulen' ";
 $result=$connect->query($query) or die("$connect->error");
-$row=$result->fetch_assoc();
+
+for($i=0; $i<$result->num_rows;$i++) {
+    $row=$result->fetch_assoc();
+
+    $matrix[$i]["id"]=$row["id"]  ;
+    $matrix[$i]["Name"]=$row["Name"]  ;
+    $matrix[$i]["Address"]=$row['Address']  ;
+    $matrix[$i]["email"]=$row["email"]  ;
+    $matrix[$i]["OrderDate"]=$row["OrderDate"]  ;
+
+}
+
 $connect->close();
-print_r($row);
-*/
+
+for($j=0; $j<$result->num_rows; $j++) {
+    echo $matrix[$j]['Address'];
+    echo "<br>";
+}
+
 
 //Prepared statements
-$connect=new mysqli("localhost","root","","firezend") or die($connect->error);
+//$connect=new mysqli("localhost","root","","firezend") or die($connect->error);
 /*
 $insert=$connect->prepare("INSERT INTO Customers (Name, Address, email) VALUES (?,?,?)");
 $insert->bind_param("sss",$name,$address,$email);
@@ -40,9 +55,11 @@ $insert->execute();
 $insert->close();
 $connect->close();
 */
+
+/*  Update table from Database
 $query="UPDATE Customers SET Address='Maksima Gorkog 4' WHERE Name='Iven'; ";
 $query.="DELETE FROM Customers WHERE id='2' ";
 $connect->multi_query($query) or die($connect->error);
 $connect->close();
-
+*/
 ?>
