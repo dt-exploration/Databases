@@ -13,8 +13,8 @@ id INT(6) AUTO_INCREMENT PRIMARY KEY,
 Name VARCHAR(30) NOT NULL,
 Address VARCHAR(30) NOT NULL,
 email VARCHAR (30),
-OrderDate TIMESTAMP)" or die("$connect->error");
+OrderDate TIMESTAMP)" ;
 
-$connect->query($query);
+$connect->query($query) or die("$connect->error");
 $connect->close();
 ?>
