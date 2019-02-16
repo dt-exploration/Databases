@@ -13,24 +13,25 @@ $connect->close();
 */
 
 // Selecting from table
-$connect=new mysqli("localhost","root","","firezend") or die("$connect->error");
-$query=" SELECT * FROM Customers WHERE name='Dulen' ";
-$result=$connect->query($query) or die("$connect->error");
+$connect = new mysqli("localhost","root","","firezend") or die("$connect->error");
+$query = " SELECT * FROM Customers WHERE name='Dulen' ";
+$result = $connect->query($query) or die("$connect->error");
 
-for($i=0; $i<$result->num_rows;$i++) {
-    $row=$result->fetch_assoc();
+for($i=0; $i < $result->num_rows; $i++) {
 
-    $matrix[$i]["id"]=$row["id"]  ;
-    $matrix[$i]["Name"]=$row["Name"]  ;
-    $matrix[$i]["Address"]=$row['Address']  ;
-    $matrix[$i]["email"]=$row["email"]  ;
-    $matrix[$i]["OrderDate"]=$row["OrderDate"]  ;
+    $row = $result->fetch_assoc();
+
+    $matrix[$i]["id"] = $row["id"]  ;
+    $matrix[$i]["Name"] = $row["Name"]  ;
+    $matrix[$i]["Address"] = $row['Address']  ;
+    $matrix[$i]["email"] = $row["email"]  ;
+    $matrix[$i]["OrderDate"] = $row["OrderDate"]  ;
 
 }
 
 $connect->close();
 
-for($j=0; $j<$result->num_rows; $j++) {
+for($j=0; $j < $result->num_rows; $j++) {
     echo $matrix[$j]['Address'];
     echo "<br>";
 }
