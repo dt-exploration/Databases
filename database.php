@@ -17,4 +17,5 @@ $query = "CREATE TABLE Customers (
 
 $connect->query($query) or die("$connect->error");
 $connect->close();
+
 ?>
